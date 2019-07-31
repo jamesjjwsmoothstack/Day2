@@ -10,13 +10,14 @@ public class day2 {
 		circle cir = new circle();	
 		triangle tri = new triangle();
 		
-		tri.calculateArea(25, 10);
+		
+		tri.calculateArea();
 		tri.display();
 		
-		cir.calculateArea(10, 0);
+		cir.calculateArea();
 		cir.display();
 		
-		rec.calculateArea(20, 40);
+		rec.calculateArea();
 		rec.display();
 	}
 	
@@ -40,8 +41,10 @@ public class day2 {
 	}
 	
 	public void d2array(){
-		
-			int size = 5;
+			System.out.println("Enter a postive interger greater than one for size of the array");
+			Scanner in = new Scanner(System.in);
+			int size = in.nextInt();
+			
 			int[][] array2d = new int[size][size];
 
 			for(int x = 0;x<size;x++) {
@@ -51,7 +54,9 @@ public class day2 {
 				}
 			}
 
-			int xMax = 0;int yMax = 0;int max = 0;
+			int xMax = 0;
+			int yMax = 0;
+			int max = 0;
 
 			for(int x = 0;x<size;x++) {
 				for(int y = 0;y<size;y++) {
@@ -72,20 +77,24 @@ public class day2 {
 	
 interface shape{
 	void display();
-	void calculateArea(double b, double c);
+	void calculateArea();
 }
 
 class circle implements shape{
 	double radius = 0;
 	double result = 0;
 	double pi = Math.PI;
-	public void calculateArea(double radius, double pi) {
+	Scanner in = new Scanner(System.in);
+	
+	public void calculateArea() {
 		pi = Math.PI;
+		System.out.println("Please enter the radius of the circle");
+		radius = in.nextDouble();
 		result = (pi * (radius * radius));
 	}
 	
 	public void display() {
-		System.out.println(result);	
+		System.out.println("Area of cricle = " + result);	
 	}
 }
 
@@ -94,13 +103,18 @@ class triangle implements shape{
 	double height = 0;
 	double width = 0;
 	double result = 0;
-	public void calculateArea(double height, double width) {
+	Scanner in = new Scanner(System.in);
+	public void calculateArea() {
 		
-	result = (.5 * height * width);
+		System.out.println("Please enter the width of the triangle");
+		width = in.nextDouble();
+		System.out.println("Please enter the height of the triangle");
+		height = in.nextDouble();
+		result = (.5 * height * width);
 	}
 	
 	public void display() {
-		System.out.println(result);	
+		System.out.println("Area of triangle = " + result);	
 	}
 }
 
@@ -108,13 +122,17 @@ class rectangle implements shape{
 		double length = 0; 
 		double width = 0;
 		double result = 0;
-	
-	public void calculateArea(double length, double width) {
+		Scanner in = new Scanner(System.in);
 		
+	public void calculateArea() {
+		System.out.println("Please enter the width of the rectangle");
+		width = in.nextDouble();
+		System.out.println("Please enter the length of the rectangle");
+		length = in.nextDouble();
 		result = (length * width);
 	}
 	
 	public void display() {
-		System.out.println(result);	
+		System.out.println("Area of rectangle = " + result);	
 	}
 }
